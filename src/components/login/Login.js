@@ -21,7 +21,7 @@ export default function Login({ setAuthAction, setUser }) {
 	}
 
 	return (
-		<form onSubmit={submitHandler} className="login-form">
+		<form onSubmit={submitHandler} className="auth-form">
 			<h2>Log into your account</h2>
 			<input
 				type="text"

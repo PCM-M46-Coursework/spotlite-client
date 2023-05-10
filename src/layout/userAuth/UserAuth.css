@@ -12,3 +12,42 @@
     text-align: center;
     color: #ffffff;
 }
+
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+    gap: 2ch;
+    width: 20vw;
+    color: #ffffff;
+}
+
+.changeMode {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.auth-form button {
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px 1px #000;
+    border: 2px solid #ffffff;
+    padding: 0.5ch 1ch;
+    color: #ffffff;
+    background-color: transparent;
+    box-shadow: 1px 1px 5px 1px rgba(255, 255, 255, 1);
+    font-family: 'Kavoon', cursive;
+    font-size: 1.5rem;
+}
+
+.auth-form button:hover {
+    box-shadow: inset 1px 1px 5px 1px rgba(255, 255, 255, 1);
+}
+
+.auth-form input {
+    border-radius: 10px;
+    padding-block: 0.5ch;
+    text-align: center;
+    font-size: 1.5rem;
+}
