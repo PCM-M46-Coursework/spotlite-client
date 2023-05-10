@@ -1,15 +1,18 @@
 import { useState } from "react";
 import "./UserAuth.css";
 
+import Register from "../../components/register/Register.js";
+
 export default function UserAuth({ user, setUser }) {
-	const [mode, setMode] = useState("login");
+	const [authAction, setAuthAction] = useState("register");
 
 	return (
 		<div>
-			{mode === "login"
-				? {/* Login Component */}
-				: {/* Register Component */}
-            }
+			{authAction == "login" ? (
+				<p>Login</p>
+			) : (
+				<Register setAuthAction={setAuthAction} />
+			)}
 		</div>
 	);
 }
