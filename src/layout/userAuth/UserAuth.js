@@ -6,10 +6,14 @@ export default function UserAuth({ user, setUser }) {
 
 	return (
 		<div>
+			Hello
 			{mode === "login"
-				? {/* Login Component */}
-				: {/* Register Component */}
-            }
+				? {
+						/* Login Component */
+				  }
+				: {
+						/* Register Component */
+				  }}
 		</div>
 	);
 }
