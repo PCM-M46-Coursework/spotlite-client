@@ -9,7 +9,7 @@ import getCookie from "./getCookie.js";
 import removeCookie from "./removeCookie.js";
 import getAllUsers from "./getAllUsers.js";
 
-export default {
+export {
 	registerUser,
 	loginUser,
 	authCheck,
