@@ -5,7 +5,7 @@ import Register from "../../components/register/Register.js";
 import Login from "../../components/login/Login.js";
 
 export default function UserAuth({ user, setUser }) {
-	const [authAction, setAuthAction] = useState("register");
+	const [authAction, setAuthAction] = useState("login");
 
 	return (
 		<div>
