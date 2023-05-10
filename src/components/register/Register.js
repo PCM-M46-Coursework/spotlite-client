@@ -3,7 +3,7 @@ import React from "react";
 import { useRef } from "react";
 import { registerUser } from "../../utils";
 
-const Register = ({ setUserMode, setUser }) => {
+export default function Register({ setAuthAction, setUser }) {
 	const username = useRef();
 	const email = useRef();
 	const password = useRef();
@@ -19,11 +19,12 @@ const Register = ({ setUserMode, setUser }) => {
 	};
 
 	function changeMode() {
-		setUserMode("login");
+		setAuthAction("login");
 	}
 
 	return (
 		<form onSubmit={submitHandler} className="register-form">
+			<h2>Create an account</h2>
 			<input
 				type="text"
 				ref={username}
@@ -57,5 +58,4 @@ const Register = ({ setUserMode, setUser }) => {
 			</p>
 		</form>
 	);
-};
-export default Register;
+}
