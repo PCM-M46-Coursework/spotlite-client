@@ -5,7 +5,7 @@ import UserAuth from "./layout/userAuth/UserAuth";
 import SpotLite from "./layout/spotLite/SpotLite";
 
 function App() {
-	const [user, setUser] = useState(null);
+	const [user, setUser] = useState({});
 
 	return (
 		<div className="app-container">
