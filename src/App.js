@@ -10,9 +10,11 @@ function App() {
 	const [user, setUser] = useState({});
 
 	// eslint-disable-next-line
-	useEffect(async () => {
-		const jwt = getCookie(process.env.REACT_APP_COOKIE_NAME);
-		if (jwt != null) await authCheck(jwt, setUser);
+	useEffect(() => {
+		(async () => {
+			const jwt = getCookie(process.env.REACT_APP_COOKIE_NAME);
+			if (jwt != null) await authCheck(jwt, setUser);
+		})();
 	}, []);
 
 	const component =
