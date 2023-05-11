@@ -1,0 +1,28 @@
+.layout {
+    min-height: 100svh;
+    width: 100vw;
+
+    display: grid;
+    grid:
+        "header header header" auto 
+        "leftSide body ." 1fr 
+        "footer footer footer" auto
+        / auto 1fr auto;
+    gap: 0.5rem;
+}
+
+.header {
+    grid-area: header;
+}
+
+.leftSide {
+    grid-area: leftSide;
+}
+
+.body {
+    grid-area: body;
+}
+
+.footer {
+    grid-area: footer;
+}

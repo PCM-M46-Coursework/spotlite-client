@@ -8,7 +8,7 @@ export default function UserAuth({ user, setUser }) {
 	const [authAction, setAuthAction] = useState("login");
 
 	return (
-		<div>
+		<div className="auth-container">
 			{authAction == "login" ? (
 				<Login setUser={setUser} setAuthAction={setAuthAction} />
 			) : (
