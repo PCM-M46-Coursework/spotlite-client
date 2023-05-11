@@ -6,9 +6,10 @@ import updateUser from "./updateUser.js";
 import deleteUser from "./deleteUser.js";
 import writeCookie from "./writeCookie.js";
 import getCookie from "./getCookie.js";
+import removeCookie from "./removeCookie.js";
 import getAllUsers from "./getAllUsers.js";
 
-export default {
+export {
 	registerUser,
 	loginUser,
 	authCheck,
@@ -17,5 +18,6 @@ export default {
 	deleteUser,
 	writeCookie,
 	getCookie,
+	removeCookie,
 	getAllUsers,
 };
