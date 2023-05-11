@@ -1,6 +1,6 @@
 import removeCookie from "./removeCookie.js";
 
 export default function logout(setUser) {
-	removeCookie("jwt_token");
+	removeCookie(process.env.REACT_APP_COOKIE_NAME);
 	setUser({});
 }
