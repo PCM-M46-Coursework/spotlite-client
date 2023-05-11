@@ -50,9 +50,14 @@ export default function UserProfile({
 						/>
 						<button>Change</button>
 					</div>
-					<button onClick={() => setIsUserProfileModalOpen(false)}>
-						Close
-					</button>
+					<div className="row">
+						<button
+							onClick={() => setIsUserProfileModalOpen(false)}
+						>
+							Close
+						</button>
+						<button>Delete Account</button>
+					</div>
 				</section>
 			</dialog>
 		</div>
