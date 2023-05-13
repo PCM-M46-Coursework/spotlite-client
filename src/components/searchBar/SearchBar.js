@@ -1,11 +1,13 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
+import { TrackSearchContext } from "../../context/trackSearchContext/TrackSearchContext";
 import "./SearchBar.css";
 
 const SearchBar = () => {
+	const { setTrackSearchTerm } = useContext(TrackSearchContext);
 	const searchInput = useRef();
 
 	const handleSearch = () => {
-		console.log("Search button clicked!");
+		setTrackSearchTerm(searchInput.current.value);
 	};
 
 	return (
@@ -15,10 +17,8 @@ const SearchBar = () => {
 				ref={searchInput}
 				className="search-input"
 				placeholder="Search..."
+				onChange={handleSearch}
 			/>
-			<button className="search-button" onClick={handleSearch}>
-				Search
-			</button>
 		</div>
 	);
 };
