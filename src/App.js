@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { authCheck, getCookie } from "./utils";
+import { authCheck, getCookie, removeCookie } from "./utils";
 
 import UserAuth from "./layout/userAuth/UserAuth";
 import SpotLite from "./layout/spotLite/SpotLite";
@@ -11,8 +11,12 @@ function App() {
 
 	// eslint-disable-next-line
 	useEffect(() => {
+		const jwt = getCookie(process.env.REACT_APP_COOKIE_NAME);
+		if (jwt === "undefined") {
+			removeCookie(process.env.REACT_APP_COOKIE_NAME);
+			return;
+		}
 		(async () => {
-			const jwt = getCookie(process.env.REACT_APP_COOKIE_NAME);
 			if (jwt != null) await authCheck(jwt, setUser);
 		})();
 	}, []);
