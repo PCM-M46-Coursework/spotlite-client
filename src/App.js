@@ -5,6 +5,7 @@ import UserAuth from "./layout/userAuth/UserAuth";
 import SpotLite from "./layout/spotLite/SpotLite";
 
 import "./App.css";
+import { SpotifyAuthProvider } from "./context/spotifyAuthContext/SpotifyAuthContext";
 
 function App() {
 	const [user, setUser] = useState({});
@@ -25,7 +26,9 @@ function App() {
 		user?.username == null ? (
 			<UserAuth user={user} setUser={setUser} />
 		) : (
-			<SpotLite user={user} setUser={setUser} />
+			<SpotifyAuthProvider>
+				<SpotLite user={user} setUser={setUser} />
+			</SpotifyAuthProvider>
 		);
 
 	return <div className="app-container">{component}</div>;
