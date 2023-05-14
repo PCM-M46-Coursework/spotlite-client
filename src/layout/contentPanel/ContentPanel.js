@@ -1,13 +1,15 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { TrackSearchContext } from "../../context/trackSearchContext/TrackSearchContext";
 import { SpotifyAuthContext } from "../../context/spotifyAuthContext/SpotifyAuthContext";
 import SpotifyWebApi from "spotify-web-api-node";
+import SpotifyTrackSearchResult from "../../components/spotifyTrackSearchResult/SpotifyTrackSearchResult";
 
 const spotifyApi = new SpotifyWebApi({
 	clientId: process.env.REACT_APP_SPOTIFY_CLIENT_ID,
 });
 
 export default function ContentPanel() {
+	const [searchResults, setSearchResults] = useState([]);
 	const { trackSearchTerm, setCurrentTrack } = useContext(TrackSearchContext);
 	const { accessToken } = useContext(SpotifyAuthContext);
 
@@ -16,10 +18,50 @@ export default function ContentPanel() {
 		spotifyApi.setAccessToken(accessToken);
 	}, [accessToken]);
 
-	async function doStuff() {
-		const results = await spotifyApi.searchTracks(trackSearchTerm);
-		console.log(results);
+	useEffect(() => {
+		if (!accessToken || !trackSearchTerm) return setSearchResults([]);
+		let cancel = false;
+
+		spotifyApi.searchTracks(trackSearchTerm).then(res => {
+			if (cancel) return;
+			console.log(res);
+			// Reference for `map()`: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
+			// Reference for `reduce()`: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
+			const results = res.body.tracks.items.map(track => {
+				const smallestImage = track.album.images.reduce(
+					(smallest, image) => {
+						if (image.height < smallest.height) return image;
+						return smallest;
+					},
+				);
+				return {
+					artist: track.artists[0].name,
+					title: track.name,
+					uri: track.uri,
+					albumUrl: smallestImage.url,
+				};
+			});
+			console.log(results);
+			setSearchResults(results);
+		});
+		return () => (cancel = true);
+	}, [accessToken, trackSearchTerm]);
+
+	function chooseTrack(track) {
+		// Format: uri = "spotify:track:nukfhiwehfkuwfwkf"
+		const trackId = track.uri.replace("spotify:track:", "");
+		setCurrentTrack(trackId);
 	}
 
-	return <div onClick={doStuff}>{trackSearchTerm}</div>;
+	return (
+		<div>
+			{searchResults.map(track => (
+				<SpotifyTrackSearchResult
+					key={track.uri}
+					track={track}
+					chooseTrack={chooseTrack}
+				/>
+			))}
+		</div>
+	);
 }
