@@ -1,5 +1,8 @@
+import { getCookie } from "../../../utils";
+
 export default async function getSpotifyTokens(code) {
 	try {
+		const jwtToken = getCookie(process.env.REACT_APP_COOKIE_NAME);
 		const response = await fetch(
 			`${process.env.REACT_APP_BASE_URL}/spotify/login`,
 			{
@@ -7,6 +10,7 @@ export default async function getSpotifyTokens(code) {
 				mode: "cors",
 				headers: {
 					"Content-Type": "application/json",
+					Authorization: `Bearer ${jwtToken}`,
 				},
 				body: JSON.stringify({ code }),
 			},

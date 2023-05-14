@@ -3,7 +3,6 @@ export default function getCookie(cookieName) {
 	try {
 		return document.cookie.match(cookieRegex)[0];
 	} catch (error) {
-		console.log(error);
 		return null;
 	}
 }

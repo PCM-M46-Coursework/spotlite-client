@@ -4,72 +4,117 @@ import getSpotifyAuthUrl from "./fn/getSpotifyAuthUrl";
 import getSpotifyTokens from "./fn/getSpotifyTokens";
 import refreshSpotifyTokens from "./fn/refreshSpotifyTokens";
 
+// Lessons learnt from writing this context:
+//
+// 1. Make your use effects small, and succinct.
+// 2. Any action that causes a re-render, will cause a code fork.
+// 3. Console logs will help a lot to follow the code-flow.
+// 4. Extracting and refactoring methods will help.
+// 5. Ideally, the useEffect itself should be a Facade, when handling multiple code-forks.
+
 const SpotifyAuthContext = createContext();
-const code = new URLSearchParams(window.location.search).get("code");
 
 function SpotifyAuthProvider({ children }) {
-	const [authCode, setAuthCode] = useState(code);
 	const [refreshToken, setRefreshToken] = useState("");
 	const [accessToken, setAccessToken] = useState("");
-	const [expiresIn, setExpiresIn] = useState(""); // 3600
+	const [expiresIn, setExpiresIn] = useState(3600);
+
+	//#region Token Functions
+
+	async function refreshAccessToken() {
+		const tokens = await refreshSpotifyTokens(refreshToken);
+		setAccessToken(tokens.accessToken);
+		setExpiresIn(tokens.expiresIn);
+	}
+
+	function persistAccessToken() {
+		const interval = setInterval(async () => {
+			await refreshAccessToken();
+		}, (expiresIn - 60) * 1000);
+		return () => clearInterval(interval);
+	}
+
+	async function getAccessToken(code) {
+		window.history.pushState({}, null, "/");
+		const tokens = await getSpotifyTokens(code);
+		writeCookie("swapi_refresh_token", tokens.refreshToken, 365);
+		setAccessToken(tokens.accessToken);
+		setRefreshToken(tokens.refreshToken);
+		setExpiresIn(tokens.expiresIn);
+	}
+
+	//#endregion
+
+	//#region Authentication Functions
+
+	function handleCookieCheck() {
+		// 1. If swapi_refresh_token cookie exists:
+		console.log("1. No token found, checking cookies.");
+		const storedToken = getCookie("swapi_refresh_token");
+		if (storedToken) {
+			console.log("Cookie found. Using that.");
+			return storedToken;
+		}
+	}
+
+	async function handleAuthCodeCheck() {
+		// 2. If authCode exists:
+		console.log("2. Checking whether auth code exists in URL...");
+		const code = new URLSearchParams(window.location.search).get("code");
+		console.log("Code: ", code);
+		if (code) {
+			console.log("Auth code found. Obtaining tokens from server...");
+			await getAccessToken(code);
+			return false;
+		}
+		return true;
+	}
+
+	function handleRedirect() {
+		// 3. If we cannot find a refresh token by any means, relocate to Spotify for login.
+		console.log(
+			"3. No refresh token or auth code can be located. Signing into Spotify...",
+		);
+		window.location.href = getSpotifyAuthUrl([
+			"streaming",
+			"user-read-email",
+			"user-read-private",
+			"user-library-read",
+			"user-library-modify",
+			"user-read-playback-state",
+			"user-modify-playback-state",
+		]);
+	}
+
+	//#endregion
+
+	//#region useEffects
 
 	useEffect(() => {
-		async function refreshAccessToken() {
-			const tokens = await refreshSpotifyTokens(refreshToken);
-			setAccessToken(tokens.accessToken);
-			setExpiresIn(tokens.expiresIn);
-		}
+		accessToken && console.log("Access Token:", accessToken);
+	}, [accessToken]);
 
-		async function persistAccessToken() {
-			return setInterval(async () => {
-				await refreshAccessToken();
-			}, (expiresIn - 60) * 1000);
-		}
+	useEffect(() => {
+		if (!refreshToken) return;
+		(async () => await refreshAccessToken())();
+		return persistAccessToken();
+	}, [refreshToken]);
 
-		async function getAccessToken() {
-			const tokens = await getSpotifyTokens(authCode);
-			setAccessToken(tokens.accessToken);
-			setRefreshToken(tokens.refreshToken);
-			setExpiresIn(tokens.expiresIn);
-			window.history.pushState({}, null, "/");
-			setAuthCode("");
+	useEffect(() => {
+		if (refreshToken) return;
+		const storedToken = handleCookieCheck();
+		if (storedToken) {
+			setRefreshToken(storedToken);
+			return;
 		}
-
 		(async () => {
-			// 0. If refresh token already exists...
-			if (refreshToken && expiresIn) {
-				writeCookie("swapi_refresh_token", refreshToken, 365);
-				const interval = await persistAccessToken();
-				return () => clearInterval(interval);
-			}
-
-			// 1. Check swapi_refresh_token cookie.
-			const storedToken = getCookie("swapi_refresh_token");
-
-			// 2. If swapi_refresh_token cookie exists:
-			if (!refreshToken && storedToken) {
-				setRefreshToken(storedToken);
-				return;
-			}
-
-			// 3. If authCode exists:
-			if (authCode) {
-				await getAccessToken();
-				return;
-			}
-
-			// 4. If we cannot find a refresh token by any means, relocate to Spotify for login.
-			window.location.href = getSpotifyAuthUrl([
-				"streaming",
-				"user-read-email",
-				"user-read-private",
-				"user-library-read",
-				"user-library-modify",
-				"user-read-playback-state",
-				"user-modify-playback-state",
-			]);
+			const redirect = await handleAuthCodeCheck();
+			console.log("Redirect: ", redirect);
+			if (redirect) handleRedirect();
 		})();
-	}, [refreshToken, expiresIn, authCode]);
+	}, []);
+
+	//#endregion
 
 	return (
 		<SpotifyAuthContext.Provider value={{ accessToken }}>
