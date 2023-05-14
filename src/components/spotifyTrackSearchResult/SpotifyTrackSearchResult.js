@@ -1,6 +1,6 @@
 import "./SpotifyTrackSearchResult.css";
 
-export default function TrackSearchResult({ track, chooseTrack }) {
+export default function SpotifyTrackSearchResult({ track, chooseTrack }) {
 	return (
 		<div className="track-search-result" onClick={() => chooseTrack(track)}>
 			<img

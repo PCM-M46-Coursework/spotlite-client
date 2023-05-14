@@ -9,3 +9,8 @@
     margin-left: 2ch;
     text-align: left;
 }
+
+.text-muted {
+    color: #88888888;
+    font-size: smaller;
+}
