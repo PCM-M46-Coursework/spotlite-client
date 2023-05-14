@@ -3,8 +3,19 @@ import { TrackSearchContext } from "../../context/trackSearchContext/TrackSearch
 
 export default function Footer() {
 	const { currentTrack } = useContext(TrackSearchContext);
-
-	useEffect(() => console.log(currentTrack), [currentTrack]);
-
-	return <div>{currentTrack}</div>;
+	return (
+		<div id="embed-iframe">
+			{currentTrack && (
+				<iframe
+					title="Spotify Player"
+					frameBorder="0"
+					src={`https://open.spotify.com/embed/track/${currentTrack}?utm_source=generator&theme=0`}
+					width="100%"
+					height="152"
+					allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+					loading="lazy"
+				></iframe>
+			)}
+		</div>
+	);
 }
