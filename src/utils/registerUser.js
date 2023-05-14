@@ -19,6 +19,6 @@ export default async function registerUser(username, email, password, setUser) {
 			parseInt(process.env.REACT_APP_COOKIE_TTL),
 		);
 	} catch (error) {
-		console.log(`Registraion Error: ${error.message}`);
+		console.log(`Registration Error: ${error.message}`);
 	}
 }

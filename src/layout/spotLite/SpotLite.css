@@ -1,28 +1,28 @@
-.layout {
-    min-height: 100svh;
-    width: 100vw;
-
-    display: grid;
-    grid:
-        "header header header" auto 
-        "leftSide body ." 1fr 
-        "footer footer footer" auto
-        / auto 1fr auto;
-    gap: 0.5rem;
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    max-height: 100vh;
+    min-height: 100vh;
 }
 
-.header {
-    grid-area: header;
+.header-wrapper {
+    background-color: black;
 }
 
-.leftSide {
-    grid-area: leftSide;
+.main-wrapper {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
 }
 
-.body {
-    grid-area: body;
+.sidebar-wrapper {
+    width: 250px;
+    overflow-y: auto;
+    background-color: black;
 }
 
-.footer {
-    grid-area: footer;
+.content-panel-wrapper {
+    flex: 1;
+    background-color: black;
+    overflow-y: auto;
 }
