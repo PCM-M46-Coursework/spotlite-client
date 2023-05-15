@@ -3,8 +3,9 @@ import imgLogo from "./images/logo.png";
 
 import Logout from "../../components/logout/Logout.js";
 import SearchBar from "../../components/searchBar/SearchBar";
-import UserProfile from "../../components/userProfile/UserProfile";
+import UserProfileModal from "../../components/userProfileModal/UserProfileModal";
 import { useState } from "react";
+import { UserProfileProvider } from "../../components/userProfileModal/context/UserProfileContext";
 
 export default function Header({ user, setUser }) {
 	const [isUserProfileModalOpen, setIsUserProfileModalOpen] = useState(false);
@@ -21,20 +22,17 @@ export default function Header({ user, setUser }) {
 			<section className="account">
 				<p>
 					Welcome,{" "}
-					<span
-						className="profile-link"
-						onClick={() => setIsUserProfileModalOpen(true)}
-					>
+					<span className="profile-link" onClick={() => setIsUserProfileModalOpen(true)}>
 						{user.username}
 					</span>
 					!
 				</p>
-				<UserProfile
-					user={user}
-					setUser={setUser}
-					isUserProfileModalOpen={isUserProfileModalOpen}
-					setIsUserProfileModalOpen={setIsUserProfileModalOpen}
-				/>
+				<UserProfileProvider user={user} setUser={setUser}>
+					<UserProfileModal
+						isUserProfileModalOpen={isUserProfileModalOpen}
+						setIsUserProfileModalOpen={setIsUserProfileModalOpen}
+					/>
+				</UserProfileProvider>
 				<Logout setUser={setUser} />
 			</section>
 		</header>
