@@ -23,7 +23,7 @@ export default function Register({ setAuthAction, setUser }) {
 	}
 
 	return (
-		<form onSubmit={submitHandler} className="register-form">
+		<form onSubmit={submitHandler} className="auth-form">
 			<h2>Create an account</h2>
 			<input
 				type="text"

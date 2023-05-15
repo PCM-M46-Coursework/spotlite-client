@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
 import { authCheck, getCookie } from "./utils";
-import "./App.css";
 
 import UserAuth from "./layout/userAuth/UserAuth";
 import SpotLite from "./layout/spotLite/SpotLite";
 
+import "./App.css";
+
 function App() {
 	const [user, setUser] = useState({});
 
-	// useEffect(async () => {
-	// 	const jwt = getCookie("jwt_token");
-	// 	if (jwt != null) await authCheck(jwt, setUser);
-	// }, []);
+	// eslint-disable-next-line
+	useEffect(async () => {
+		const jwt = getCookie(process.env.REACT_APP_COOKIE_NAME);
+		if (jwt != null) await authCheck(jwt, setUser);
+	}, []);
 
 	const component =
 		user?.username == null ? (

@@ -4,12 +4,12 @@ import "./UserAuth.css";
 import Register from "../../components/register/Register.js";
 import Login from "../../components/login/Login.js";
 
-export default function UserAuth({ user, setUser }) {
+export default function UserAuth({ setUser }) {
 	const [authAction, setAuthAction] = useState("login");
 
 	return (
-		<div>
-			{authAction == "login" ? (
+		<div className="auth-container">
+			{authAction === "login" ? (
 				<Login setUser={setUser} setAuthAction={setAuthAction} />
 			) : (
 				<Register setUser={setUser} setAuthAction={setAuthAction} />
