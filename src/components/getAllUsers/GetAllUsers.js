@@ -10,7 +10,10 @@ const GetAllUsers = () => {
         const fetchUsers = async () => {
             try {
                 const data = await getAllUsers();
-                setUsers(data);
+    
+                setUsers(data.users);
+ 
+                console.log(data);
             } catch (error) {
                 console.log("Error fetching users", error);
             }
@@ -24,7 +27,7 @@ const GetAllUsers = () => {
         <h1>All Users</h1>
         <ul>
             {users.map((user) => (
-                <li key={user.id}>{user.name}</li>
+                <li key={user.username}>{user.username} <br></br> {user.email}</li>
             ))}
         </ul>
         </>
