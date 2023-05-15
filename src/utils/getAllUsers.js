@@ -20,3 +20,5 @@ export const getAllUsers = async (username) => {
             console.error("Error fetching users:", error);
         }
     };
+
+    export default getAllUsers;
