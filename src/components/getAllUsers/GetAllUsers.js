@@ -25,11 +25,17 @@ const GetAllUsers = () => {
     return (
         <>
         <h1>All Users</h1>
-        <ul>
+       
+        <div className="card container">
             {users.map((user) => (
-                <li key={user.username}>{user.username} <br></br> {user.email}</li>
+                <div className="card" key={user.username}>
+                    {user.username} 
+                    <br></br> 
+                    {user.email}
+                </div>
             ))}
-        </ul>
+        </div>
+        
         </>
     );
 };
