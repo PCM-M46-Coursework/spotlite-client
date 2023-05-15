@@ -16,7 +16,7 @@ export default async function authCheck(jwtToken, setUser) {
 		setUser(json.user);
 		writeCookie(
 			process.env.REACT_APP_COOKIE_NAME,
-			json.token,
+			json.user.token,
 			parseInt(process.env.REACT_APP_COOKIE_TTL),
 		);
 	} catch (error) {

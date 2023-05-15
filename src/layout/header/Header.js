@@ -3,11 +3,12 @@ import imgLogo from "./images/logo.png";
 
 import Logout from "../../components/logout/Logout.js";
 import SearchBar from "../../components/searchBar/SearchBar";
+import UserProfileModal from "../../components/userProfileModal/UserProfileModal";
+import { useState } from "react";
+import { UserProfileProvider } from "../../components/userProfileModal/context/UserProfileContext";
 
 export default function Header({ user, setUser }) {
-	function showUserProfile() {
-		console.log("User Profile modal form not implemented.");
-	}
+	const [isUserProfileModalOpen, setIsUserProfileModalOpen] = useState(false);
 
 	return (
 		<header className="header-container">
@@ -21,11 +22,17 @@ export default function Header({ user, setUser }) {
 			<section className="account">
 				<p>
 					Welcome,{" "}
-					<span className="profile-link" onClick={showUserProfile}>
+					<span className="profile-link" onClick={() => setIsUserProfileModalOpen(true)}>
 						{user.username}
 					</span>
 					!
 				</p>
+				<UserProfileProvider user={user} setUser={setUser}>
+					<UserProfileModal
+						isUserProfileModalOpen={isUserProfileModalOpen}
+						setIsUserProfileModalOpen={setIsUserProfileModalOpen}
+					/>
+				</UserProfileProvider>
 				<Logout setUser={setUser} />
 			</section>
 		</header>
