@@ -18,7 +18,7 @@ export default function SideBar() {
 	return (
 		<>
 			{sidebarMenuMap.map(cat => (
-				<div className="category">
+				<div key={cat.category} className="category">
 					<h3>{cat.category}</h3>
 					<ul className="category-list">
 						{cat.items.map(item => (
