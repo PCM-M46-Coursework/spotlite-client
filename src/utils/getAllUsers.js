@@ -1,6 +1,6 @@
 import getCookie from "./getCookie";
 
-export const getAllUsers = async (username) => {
+const getAllUsers = async (username) => {
     try {
         const jwtToken = getCookie(process.env.REACT_APP_COOKIE_NAME)
         const response = await fetch(
@@ -20,3 +20,5 @@ export const getAllUsers = async (username) => {
             console.error("Error fetching users:", error);
         }
     };
+
+    export default getAllUsers;
