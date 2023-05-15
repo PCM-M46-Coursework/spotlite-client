@@ -1,0 +1,30 @@
+.category {
+    text-align: left;
+    margin-block-end: 2rem;
+}
+
+.category h3 {
+    margin-block-end: 1ch;
+}
+
+ul.category-list {
+    list-style: none;
+}
+
+.category-list li {
+    margin-block-end: 1ch;
+    cursor: pointer;
+}
+
+.category-list li:hover {
+    text-decoration: underline;
+}
+
+.menu-item {
+    margin-left: 2rem;
+    font-size: 0.9rem;
+}
+
+.menu-item.selected {
+    font-weight: 700;
+}

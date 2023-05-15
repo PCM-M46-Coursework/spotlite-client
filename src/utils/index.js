@@ -7,6 +7,7 @@ import deleteUser from "./deleteUser.js";
 import writeCookie from "./writeCookie.js";
 import getCookie from "./getCookie.js";
 import removeCookie from "./removeCookie.js";
+import changePassword from "./changePassword.js";
 import getAllUsers from "./getAllUsers.js";
 
 export {
@@ -19,5 +20,6 @@ export {
 	writeCookie,
 	getCookie,
 	removeCookie,
+	changePassword,
 	getAllUsers,
 };
