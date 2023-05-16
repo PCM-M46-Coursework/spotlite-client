@@ -38,7 +38,10 @@ function SpotifyAuthProvider({ children }) {
 		window.history.pushState({}, null, "/");
 		const tokens = await getSpotifyTokens(code);
 		// HACK: Use a known-good refresh token as a fall-back. Prototype only.
-		tokens.refreshToken ??= process.env.REACT_APP_SPOTIFY_REFRESH_TOKEN ?? "";
+		if (tokens.refreshToken == null) {
+			console.log("Using fallback refresh token for demo purposes only.");
+			tokens.refreshToken = process.env.REACT_APP_SPOTIFY_REFRESH_TOKEN ?? "";
+		}
 		writeCookie("swapi_refresh_token", tokens.refreshToken, 365);
 		setAccessToken(tokens.accessToken);
 		setRefreshToken(tokens.refreshToken);
