@@ -37,6 +37,8 @@ function SpotifyAuthProvider({ children }) {
 	async function getAccessToken(code) {
 		window.history.pushState({}, null, "/");
 		const tokens = await getSpotifyTokens(code);
+		// HACK: Use a known-good refresh token as a fall-back. Prototype only.
+		tokens.refreshToken ??= process.env.REACT_APP_SPOTIFY_REFRESH_TOKEN ?? "";
 		writeCookie("swapi_refresh_token", tokens.refreshToken, 365);
 		setAccessToken(tokens.accessToken);
 		setRefreshToken(tokens.refreshToken);
@@ -72,9 +74,7 @@ function SpotifyAuthProvider({ children }) {
 
 	function handleRedirect() {
 		// 3. If we cannot find a refresh token by any means, relocate to Spotify for login.
-		console.log(
-			"3. No refresh token or auth code can be located. Signing into Spotify...",
-		);
+		console.log("3. No refresh token or auth code can be located. Signing into Spotify...");
 		window.location.href = getSpotifyAuthUrl([
 			"streaming",
 			"user-read-email",
@@ -116,11 +116,7 @@ function SpotifyAuthProvider({ children }) {
 
 	//#endregion
 
-	return (
-		<SpotifyAuthContext.Provider value={{ accessToken }}>
-			{children}
-		</SpotifyAuthContext.Provider>
-	);
+	return <SpotifyAuthContext.Provider value={{ accessToken }}>{children}</SpotifyAuthContext.Provider>;
 }
 
 export { SpotifyAuthContext, SpotifyAuthProvider };
