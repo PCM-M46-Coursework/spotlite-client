@@ -1,0 +1,30 @@
+.page-wrapper {
+    display: flex;
+    flex-direction: column;
+    max-height: 100vh;
+    min-height: 100vh;
+}
+
+.header-wrapper {
+    background-color: black;
+}
+
+.main-wrapper {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.sidebar-wrapper {
+    width: 250px;
+    overflow-y: auto;
+    background-color: black;
+    padding: 2ch;
+    overflow-y: auto;
+}
+
+.content-panel-wrapper {
+    flex: 1;
+    background-color: black;
+    overflow-y: auto;
+}

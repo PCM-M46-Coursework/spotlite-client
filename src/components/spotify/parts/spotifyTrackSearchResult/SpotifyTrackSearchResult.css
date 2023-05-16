@@ -1,0 +1,16 @@
+.track-search-result {
+    display: flex;
+    align-items: center;
+    margin: 2ch;
+    cursor: pointer;
+}
+
+.track-info {
+    margin-left: 2ch;
+    text-align: left;
+}
+
+.text-muted {
+    color: #88888888;
+    font-size: smaller;
+}
