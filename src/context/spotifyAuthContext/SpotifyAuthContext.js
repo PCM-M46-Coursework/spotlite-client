@@ -30,7 +30,7 @@ function SpotifyAuthProvider({ children }) {
 	function persistAccessToken() {
 		const interval = setInterval(async () => {
 			await refreshAccessToken();
-		}, (expiresIn - 60) * 1000);
+		}, (3600 - 60) * 1000);
 		return () => clearInterval(interval);
 	}
 
