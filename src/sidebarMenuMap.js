@@ -1,5 +1,6 @@
 import GetAllUsers from "./components/getAllUsers/GetAllUsers";
-import SearchByTrack from "./components/searchByTrack/SearchByTrack";
+import SearchByTrack from "./components/spotify/searchByTrack/SearchByTrack";
+import Playlists from "./components/spotify/playlists/Playlists";
 import SiteCredits from "./components/privacyCentre/credits/SiteCredits";
 import ContactDataProtection from "./components/privacyCentre/dataProtection/ContactDataProtection";
 import CookiePolicy from "./components/privacyCentre/cookiePolicy/CookiePolicy";
@@ -11,6 +12,11 @@ const menuMap = [
 	{
 		category: "Spotify Search",
 		items: [
+			{
+				id: "playlists",
+				title: "Your Playlists",
+				component: <Playlists />,
+			},
 			{
 				id: "searchByTrack",
 				title: "Search by Track",
