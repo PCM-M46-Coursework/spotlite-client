@@ -9,6 +9,7 @@ import getCookie from "./getCookie.js";
 import removeCookie from "./removeCookie.js";
 import changePassword from "./changePassword.js";
 import getAllUsers from "./getAllUsers.js";
+import biography from "./biography.js";
 
 export {
 	registerUser,
@@ -22,4 +23,5 @@ export {
 	removeCookie,
 	changePassword,
 	getAllUsers,
+	biography
 };
