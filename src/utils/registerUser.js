@@ -12,6 +12,9 @@ export default async function registerUser(username, email, password, setUser) {
 			},
 		);
 		const json = await response.json();
+		if (response.status === 400) {
+			return { errors:json.errors}
+		};
 		setUser(json.user);
 		writeCookie(
 			process.env.REACT_APP_COOKIE_NAME,
@@ -20,5 +23,6 @@ export default async function registerUser(username, email, password, setUser) {
 		);
 	} catch (error) {
 		console.log(`Registration Error: ${error.message}`);
+		return error
 	}
 }
