@@ -1,0 +1,49 @@
+.pc-page-title {
+    margin-top: 1rem;
+}
+
+.pc-section-title {
+    margin-block: 1ch;
+}
+
+.pc-detail-text {
+    text-align: justify;
+    text-align-last: left;
+    max-width: 80vw;
+    margin-bottom: 2ch;
+    padding-left: 2ch;
+    line-height: 1.75;
+}
+
+.actual-list li {
+    list-style: inside !important;
+    padding-left: 2ch;
+    margin: 1ch;
+    line-height: 1.75;
+}
+
+.gdpr-form .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1ch;
+}
+
+.gdpr-form label {
+    margin-top: 2ch;
+    margin-bottom: 1ch;
+}
+
+.gdpr-form input[type="text"],
+.gdpr-form input[type="email"],
+.gdpr-form textarea {
+    width: 50ch;
+}
+
+.gdpr-form input[type="checkbox"] {
+    margin-right: 2ch;
+}
+
+.gdpr-form button[type="submit"] {
+    width: 50ch;
+    margin-top: 2ch;
+}
