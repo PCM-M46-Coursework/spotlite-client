@@ -14,6 +14,9 @@ export default async function loginUser(username, password, setUser) {
 			},
 		);
 		const json = await response.json();
+		if (response.status === 401) {
+			return { errors:json.errorMessage}
+		};
 		setUser(json.user);
 		writeCookie(
 			process.env.REACT_APP_COOKIE_NAME,
@@ -22,5 +25,6 @@ export default async function loginUser(username, password, setUser) {
 		);
 	} catch (error) {
 		console.log(`Login Error: ${error.message}`);
+		return error
 	}
 }

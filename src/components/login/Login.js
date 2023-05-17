@@ -1,19 +1,23 @@
 import "./Login.css";
-import React from "react";
+import React, { useState } from "react";
 import { useRef } from "react";
 import { loginUser } from "../../utils";
 
 export default function Login({ setAuthAction, setUser }) {
 	const username = useRef();
 	const password = useRef();
+	const [errorMsg, setErrorMsg] = useState([]);
 
 	const submitHandler = async e => {
 		e.preventDefault();
-		await loginUser(
-			username.current.value,
-			password.current.value,
-			setUser,
-		);
+			const data = await loginUser(
+				username.current.value,
+				password.current.value,
+				setUser,
+				
+			);
+			if ( data.errors ) {
+				setErrorMsg([data.errors])}
 	};
 
 	function changeMode() {
@@ -23,6 +27,14 @@ export default function Login({ setAuthAction, setUser }) {
 	return (
 		<form onSubmit={submitHandler} className="auth-form">
 			<h2>Log into your account</h2>
+			{errorMsg.length > 0 && (
+      		  <ul className="error-list">
+      		    {errorMsg.map((error, index) => (
+      		      <li key={index}>{error}</li>
+      		    ))}
+      		  </ul>
+      		)} {/* Display error messages */} 
+
 			<input
 				type="text"
 				ref={username}

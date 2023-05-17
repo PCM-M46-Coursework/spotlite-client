@@ -13,6 +13,11 @@ export default function UserProfile({ user }) {
 				<span className="user-profile-label">Email:</span>
 				<span className="user-profile-value">{user.email}</span>
 			</div>
+			<div className="user-profile-item">
+				<span className="user-profile-label">Biography:</span>
+				<span className="user-profile-value">{user.biography}</span>
+			</div>
+			
 		</>
 	);
 }

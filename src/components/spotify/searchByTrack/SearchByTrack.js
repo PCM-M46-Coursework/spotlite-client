@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
-import { TrackSearchContext } from "../../context/trackSearchContext/TrackSearchContext";
-import { SpotifyAuthContext } from "../../context/spotifyAuthContext/SpotifyAuthContext";
+import { TrackSearchContext } from "../../../context/trackSearchContext/TrackSearchContext";
+import { SpotifyAuthContext } from "../../../context/spotifyAuthContext/SpotifyAuthContext";
 import SpotifyWebApi from "spotify-web-api-node";
-import SpotifyTrackSearchResult from "../../components/spotifyTrackSearchResult/SpotifyTrackSearchResult";
+import SpotifyTrackSearchResult from "../parts/spotifyTrackSearchResult/SpotifyTrackSearchResult";
 
 const spotifyApi = new SpotifyWebApi({
 	clientId: process.env.REACT_APP_SPOTIFY_CLIENT_ID,
@@ -28,12 +28,10 @@ export default function SearchByTrack() {
 			// Reference for `map()`: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map
 			// Reference for `reduce()`: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/reduce
 			const results = res.body.tracks.items.map(track => {
-				const smallestImage = track.album.images.reduce(
-					(smallest, image) => {
-						if (image.height < smallest.height) return image;
-						return smallest;
-					},
-				);
+				const smallestImage = track.album.images.reduce((smallest, image) => {
+					if (image.height < smallest.height) return image;
+					return smallest;
+				});
 				return {
 					artist: track.artists[0].name,
 					title: track.name,
@@ -55,13 +53,19 @@ export default function SearchByTrack() {
 
 	return (
 		<div>
-			{searchResults.map(track => (
-				<SpotifyTrackSearchResult
-					key={track.uri}
-					track={track}
-					chooseTrack={chooseTrack}
-				/>
-			))}
+			<h3>Search by Track</h3>
+			{searchResults.length > 0 ? (
+				<>
+					{searchResults.map(track => (
+						<SpotifyTrackSearchResult key={track.uri} track={track} chooseTrack={chooseTrack} />
+					))}
+				</>
+			) : (
+				<p className="block-margin">
+					{`${trackSearchTerm.length > 0 ? "No results found." : "Search for music to play."}
+                    `}
+				</p>
+			)}
 		</div>
 	);
 }
