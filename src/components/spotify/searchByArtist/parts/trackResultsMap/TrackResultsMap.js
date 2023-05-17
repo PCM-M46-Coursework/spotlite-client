@@ -19,7 +19,12 @@ export default function TrackResultsMap() {
 				<>
 					<h3>{selectedArtist.name}</h3>
 					{selectedArtistTracks.map(track => (
-						<SpotifyTrackSearchResult key={track.uri} track={track} chooseTrack={chooseTrack} />
+						<SpotifyTrackSearchResult
+							key={track.uri}
+							track={track}
+							chooseTrack={chooseTrack}
+							favourites={false}
+						/>
 					))}
 				</>
 			)}
