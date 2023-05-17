@@ -22,3 +22,7 @@
     font-family: 'Poppins', sans-serif;
     color: #ffffff;
 }
+
+.block-margin {
+    margin-block: 2ch;
+}
