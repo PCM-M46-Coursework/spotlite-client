@@ -33,9 +33,15 @@ export default function PlaylistResultsMap({ spotifyApi, playlistResults }) {
 		return () => (cancel = true);
 	}
 	return (
-		<div className="playlist-results-container">
-			{playlistResults &&
-				playlistResults.map(p => <PlaylistCard key={p.id} playlist={p} getTracks={getTracks} />)}
-		</div>
+		<>
+			<h3>Playlists</h3>
+			<div className="playlist-results-container">
+				{playlistResults.length > 0 ? (
+					playlistResults.map(p => <PlaylistCard key={p.id} playlist={p} getTracks={getTracks} />)
+				) : (
+					<p>No playlists found.</p>
+				)}
+			</div>
+		</>
 	);
 }
