@@ -1,19 +1,6 @@
 .card-container {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
-  
-  .card {
-    display: flex;
-    justify-content: center;
     flex-direction: column;
-    text-align: center;
-    width: 750px;
-    padding: 30px;
-    margin: 15px;
-    border: none;
-    background-color: none;
-  }
-  
+    justify-content: flex-start;
+    align-items: flex-start;
+}
