@@ -6,6 +6,7 @@ export default function EditDetails({ user, setUser }) {
 	const { renderPage } = useContext(UserProfileContext);
 	const username = useRef();
 	const email = useRef();
+	const biography = useRef();
 
 	function editUsername() {
 		updateUser(user.username, "username", username.current.value, setUser).then(() => {
@@ -15,6 +16,12 @@ export default function EditDetails({ user, setUser }) {
 
 	function editEmail() {
 		updateUser(user.username, "email", email.current.value, setUser).then(() => {
+			renderPage("userProfile");
+		});
+	}
+
+	function editBiography() {
+		updateUser(user.username, "biography", biography.current.value, setUser).then(() => {
 			renderPage("userProfile");
 		});
 	}
@@ -35,6 +42,13 @@ export default function EditDetails({ user, setUser }) {
 				<input type="text" id="email" ref={email} placeholder="Email Address" defaultValue={user.email} />
 				<button className="pushRight" onClick={editEmail}>
 					Edit Email
+				</button>
+			</div>
+			<div className="form-row">
+				<label htmlFor="biography">Biography:</label>
+				<input type="text" id="biography" ref={biography} placeholder="Biography" defaultValue={user.biography} />
+				<button className="pushRight" onClick={editBiography}>
+					Edit Biography
 				</button>
 			</div>
 		</>
