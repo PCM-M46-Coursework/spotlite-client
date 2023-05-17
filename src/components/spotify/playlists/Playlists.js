@@ -11,15 +11,17 @@ const spotifyApi = new SpotifyWebApi({
 });
 
 export default function Playlists() {
-	const [searchResults, setSearchResults] = useState([]);
 	const [playlistResults, setPlaylistResults] = useState([]);
-	const { trackSearchTerm, setCurrentTrack } = useContext(TrackSearchContext);
+	const { trackSearchTerm } = useContext(TrackSearchContext);
 	const { accessToken } = useContext(SpotifyAuthContext);
 
 	useEffect(() => {
 		if (!accessToken) return;
 		spotifyApi.setAccessToken(accessToken);
-		// Magic happens here, to get playlist data.
+	}, [accessToken]);
+
+	useEffect(() => {
+		if (!accessToken) return;
 		(async function getPlaylists() {
 			const response = await spotifyApi.getUserPlaylists();
 			const playlists = response.body.items.map(playlist => {
@@ -31,17 +33,13 @@ export default function Playlists() {
 					totalTracks: playlist.tracks.total,
 				};
 			});
-			setPlaylistResults(playlists);
-			console.log(playlists);
+			const filteredPlaylists = playlists.filter(playlist => {
+				const playlistTitle = playlist.title.toLowerCase();
+				const searchTerm = trackSearchTerm.toLowerCase();
+				return playlistTitle.includes(searchTerm);
+			});
+			setPlaylistResults(filteredPlaylists);
 		})();
-	}, [accessToken]);
-
-	useEffect(() => {
-		if (!accessToken || !trackSearchTerm) {
-			setSearchResults([]);
-			return;
-		}
-		// Magic happens here, to filter playlists.
 	}, [accessToken, trackSearchTerm]);
 
 	return (

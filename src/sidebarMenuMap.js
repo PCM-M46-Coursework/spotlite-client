@@ -6,6 +6,8 @@ import ContactDataProtection from "./components/privacyCentre/dataProtection/Con
 import CookiePolicy from "./components/privacyCentre/cookiePolicy/CookiePolicy";
 import PrivacyPolicy from "./components/privacyCentre/privacyPolicy/PrivacyPolicy";
 import TermsAndConditions from "./components/privacyCentre/legal/TermsAndConditions";
+import AudioVisual from "./components/local/AudioVisual";
+import SearchByArtist from "./components/spotify/searchByArtist/SearchByArtist";
 
 // Add more menu items as needed
 const menuMap = [
@@ -22,6 +24,11 @@ const menuMap = [
 				title: "Search by Track",
 				component: <SearchByTrack />,
 			},
+			{
+				id: "searchByArtist",
+				title: "Search by Artist",
+				component: <SearchByArtist />,
+			},
 		],
 	},
 	{
@@ -31,6 +38,11 @@ const menuMap = [
 				id: "getAllUsers",
 				title: "View All Users",
 				component: <GetAllUsers />,
+			},
+			{
+				id: "playLocalFiles",
+				title: "Play local files",
+				component: <AudioVisual />,
 			},
 		],
 	},

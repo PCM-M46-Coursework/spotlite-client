@@ -1,4 +1,4 @@
-.spotify-playlist-card {
+.spotify-artist-card {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -10,20 +10,20 @@
     font-size: 0.8rem;
 }
 
-.spotify-playlist-card p {
+.spotify-artist-card p {
     width: 30ch;
     text-align: center;
 }
 
-.spotify-playlist-card img {
+.spotify-artist-card img {
     max-width: 19ch;
     max-height: 19ch;
 }
 
-.spotify-playlist-card header {
+.spotify-artist-card header {
     width: inherit;
 }
 
-.spotify-playlist-card footer {
+.spotify-artist-card footer {
     width: inherit;
 }
