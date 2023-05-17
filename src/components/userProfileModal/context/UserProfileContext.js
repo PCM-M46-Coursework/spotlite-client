@@ -9,6 +9,7 @@ const UserProfileContext = createContext();
 function UserProfileProvider({ children, user, setUser }) {
 	const [selectedItem, setSelectedItem] = useState("userProfile");
 	const [page, setPage] = useState(<></>);
+	const [message, setMessage] = useState("");
 
 	useEffect(() => {
 		if (!user || !selectedItem) return;
@@ -35,7 +36,7 @@ function UserProfileProvider({ children, user, setUser }) {
 	}
 
 	return (
-		<UserProfileContext.Provider value={{ page, renderPage, selectedItem }}>{children}</UserProfileContext.Provider>
+		<UserProfileContext.Provider value={{ page, renderPage, selectedItem, message, setMessage }}>{children}</UserProfileContext.Provider>
 	);
 }
 
