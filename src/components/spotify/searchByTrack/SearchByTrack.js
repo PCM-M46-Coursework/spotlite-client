@@ -53,7 +53,7 @@ export default function SearchByTrack() {
 
 	return (
 		<div>
-			<h3>Search Results</h3>
+			<h3>Search by Track</h3>
 			{searchResults.length > 0 ? (
 				<>
 					{searchResults.map(track => (
@@ -61,7 +61,10 @@ export default function SearchByTrack() {
 					))}
 				</>
 			) : (
-				<p>No results found.</p>
+				<p className="block-margin">
+					{`${trackSearchTerm.length > 0 ? "No results found." : "Search for music to play."}
+                    `}
+				</p>
 			)}
 		</div>
 	);

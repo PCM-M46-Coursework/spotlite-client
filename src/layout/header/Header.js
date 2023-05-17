@@ -6,6 +6,7 @@ import SearchBar from "../../components/searchBar/SearchBar";
 import UserProfileModal from "../../components/userProfileModal/UserProfileModal";
 import { useState } from "react";
 import { UserProfileProvider } from "../../components/userProfileModal/context/UserProfileContext";
+import ProfilePic from "../../components/profilePic/ProfilePic";
 
 export default function Header({ user, setUser }) {
 	const [isUserProfileModalOpen, setIsUserProfileModalOpen] = useState(false);
@@ -27,6 +28,7 @@ export default function Header({ user, setUser }) {
 					</span>
 					!
 				</p>
+				<ProfilePic user={user} location={"header"} />
 				<UserProfileProvider user={user} setUser={setUser}>
 					<UserProfileModal
 						isUserProfileModalOpen={isUserProfileModalOpen}
