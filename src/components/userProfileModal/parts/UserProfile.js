@@ -1,5 +1,4 @@
 import React from "react";
-import Biography from "./Biography";
 
 export default function UserProfile({ user }) {
 	return (
@@ -14,7 +13,10 @@ export default function UserProfile({ user }) {
 				<span className="user-profile-label">Email:</span>
 				<span className="user-profile-value">{user.email}</span>
 			</div>
-			<Biography user={user}/>
+			<div className="user-profile-item">
+				<span className="user-profile-label">Biography:</span>
+				<span className="user-profile-value">{user.biography}</span>
+			</div>
 			
 		</>
 	);
