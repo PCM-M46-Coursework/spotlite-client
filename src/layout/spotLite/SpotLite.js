@@ -19,9 +19,7 @@ export default function SpotLite({ user, setUser }) {
 						<div className="sidebar-wrapper">
 							<SideBar />
 						</div>
-						<div className="content-panel-wrapper">
-							<ContentPanel />
-						</div>
+						<ContentPanel />
 					</SidebarMenuProvider>
 				</div>
 				<div className="footer-wrapper">

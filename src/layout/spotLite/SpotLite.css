@@ -1,6 +1,7 @@
 .page-wrapper {
     display: flex;
     flex-direction: column;
+    max-width: 100vw;
     max-height: 100vh;
     min-height: 100vh;
 }
@@ -17,14 +18,20 @@
 
 .sidebar-wrapper {
     width: 250px;
+    min-width: 250px;
     overflow-y: auto;
     background-color: black;
     padding: 2ch;
     overflow-y: auto;
 }
 
+.selectedPage {
+    background-color: black;
+    overflow-y: auto;
+    width: 100%;
+}
+
 .content-panel-wrapper {
-    flex: 1;
     background-color: black;
     overflow-y: auto;
 }
@@ -54,7 +61,7 @@
     .content-panel-wrapper {
         width: 30vw;
     }
-    
+
     .sidebar-wrapper {
         width: 30vw;
         overflow-y: auto;
@@ -62,7 +69,7 @@
         padding: 2ch;
         font-size: 0.7rem;
     }
-    
+
     .footer-wrapper {
         width: 100vw;
     }
@@ -100,27 +107,27 @@
     }
 
     .branding {
-      order: 1;
-      position: absolute;
-      top: 2%;
-      left: 5%;
+        order: 1;
+        position: absolute;
+        top: 2%;
+        left: 5%;
     }
 
     .search {
-      order: 3;
-      width: 70vw;
-      margin-top: 45px;
+        order: 3;
+        width: 70vw;
+        margin-top: 45px;
     }
 
     .account {
-      order: 2;
-      flex-direction: row;
-      justify-content: flex-end;
-      margin-top: 10px;
-      position: absolute;
-      top: -2%;
-      right: 5%;
-      align-items: baseline;
+        order: 2;
+        flex-direction: row;
+        justify-content: flex-end;
+        margin-top: 10px;
+        position: absolute;
+        top: -2%;
+        right: 5%;
+        align-items: baseline;
     }
 
     .account p {

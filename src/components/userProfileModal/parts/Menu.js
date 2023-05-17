@@ -24,6 +24,12 @@ export default function Menu() {
 				onClick={handleItemClick}
 			/>
 			<MenuItem
+				id="profilePic"
+				label="Profile Picture"
+				selected={selectedItem === "profilePic"}
+				onClick={handleItemClick}
+			/>
+			<MenuItem
 				id="changePassword"
 				label="Change Password"
 				selected={selectedItem === "changePassword"}
