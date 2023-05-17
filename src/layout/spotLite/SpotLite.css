@@ -28,3 +28,102 @@
     background-color: black;
     overflow-y: auto;
 }
+
+@media screen and (max-width: 600px) {
+    .header-wrapper {
+        width: 50vw;
+    }
+
+    .account {
+        flex-direction: column;
+        gap: 0ch;
+    }
+
+    .account button {
+        font-size: 12px;
+    }
+
+    .main-wrapper {
+        width: 95vw;
+    }
+
+    .card-container {
+        width: 5vw;
+    }
+
+    .content-panel-wrapper {
+        width: 30vw;
+    }
+    
+    .sidebar-wrapper {
+        width: 30vw;
+        overflow-y: auto;
+        background-color: black;
+        padding: 2ch;
+        font-size: 0.7rem;
+    }
+    
+    .footer-wrapper {
+        width: 100vw;
+    }
+}
+
+@media screen and (max-width: 512px) {
+    .sidebar-wrapper {
+        width: 150px;
+        overflow-y: auto;
+    }
+
+    .search-input {
+        margin: auto;
+    }
+
+    .account {
+        flex-direction: column;
+        gap: 0ch;
+        margin-left: auto;
+    }
+
+    .footer-wrapper {
+        margin: auto;
+        width: 100vw;
+    }
+}
+
+@media screen and (max-width: 466px) {
+    .header-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        margin: auto;
+    }
+
+    .branding {
+      order: 1;
+      position: absolute;
+      top: 2%;
+      left: 5%;
+    }
+
+    .search {
+      order: 3;
+      width: 70vw;
+      margin-top: 45px;
+    }
+
+    .account {
+      order: 2;
+      flex-direction: row;
+      justify-content: flex-end;
+      margin-top: 10px;
+      position: absolute;
+      top: -2%;
+      right: 5%;
+      align-items: baseline;
+    }
+
+    .account p {
+        margin-right: 4px;
+    }
+}
