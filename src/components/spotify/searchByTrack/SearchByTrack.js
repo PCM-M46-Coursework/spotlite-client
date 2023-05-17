@@ -61,7 +61,12 @@ export default function SearchByTrack() {
 					))}
 				</>
 			) : (
-				<p>No results found.</p>
+				<p className="block-margin">
+					{`${trackSearchTerm.length > 0 
+                        ? "No results found." 
+                        : "Search for music to play."}
+                    `}
+				</p>
 			)}
 		</div>
 	);
