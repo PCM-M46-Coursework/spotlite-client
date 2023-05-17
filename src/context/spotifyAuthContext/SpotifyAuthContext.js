@@ -24,13 +24,13 @@ function SpotifyAuthProvider({ children }) {
 	async function refreshAccessToken() {
 		const tokens = await refreshSpotifyTokens(refreshToken);
 		setAccessToken(tokens.accessToken);
-		setExpiresIn(tokens.expiresIn);
+		setExpiresIn(tokens.expiresIn || 3600);
 	}
 
 	function persistAccessToken() {
 		const interval = setInterval(async () => {
 			await refreshAccessToken();
-		}, (3600 - 60) * 1000);
+		}, (expiresIn - 60) * 1000);
 		return () => clearInterval(interval);
 	}
 
@@ -45,7 +45,7 @@ function SpotifyAuthProvider({ children }) {
 		writeCookie("swapi_refresh_token", tokens.refreshToken, 365);
 		setAccessToken(tokens.accessToken);
 		setRefreshToken(tokens.refreshToken);
-		setExpiresIn(tokens.expiresIn);
+		setExpiresIn(tokens.expiresIn || 3600);
 	}
 
 	//#endregion
