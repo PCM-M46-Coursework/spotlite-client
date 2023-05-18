@@ -15,6 +15,7 @@ function UserProfileProvider({ children, user, setUser }) {
 	useEffect(() => {
 		if (!user || !selectedItem) return;
 		renderPage(selectedItem);
+		// eslint-disable-next-line
 	}, [user]);
 
 	function renderPage(id) {

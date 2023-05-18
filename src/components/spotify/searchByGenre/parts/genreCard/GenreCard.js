@@ -7,7 +7,7 @@ export default function GenreCard({ genre, getTracks }) {
 				<p>{genre.name}</p>
 			</header>
 			<main>
-				<img src={genre.imageUrl} />
+				<img src={genre.imageUrl} alt={genre.name} title={genre.name} />
 			</main>
 			<footer>{genre.description}</footer>
 		</article>

@@ -1,23 +1,12 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useRef } from "react";
 import { updateUser } from "../../../utils";
 import { UserProfileContext } from "../context/UserProfileContext";
 
 export default function EditDetails({ user, setUser }) {
-	const { renderPage, message, setMessage } = useContext(UserProfileContext);
+	const { renderPage, setMessage } = useContext(UserProfileContext);
 	const username = useRef();
 	const email = useRef();
 	const biography = useRef();
-
-	function Popup({ message, onClose }) {
-		return (
-			<div className="popup">
-				<div className="popup-message">
-					<p>{message}</p>
-					<button onClick={onClose}>Close</button>
-				</div>
-			</div>
-		);
-	}
 
 	function editUsername() {
 		updateUser(user.username, "username", username.current.value, setUser).then(() => {
@@ -60,13 +49,17 @@ export default function EditDetails({ user, setUser }) {
 			</div>
 			<div className="form-row">
 				<label htmlFor="biography">Biography:</label>
-				<input type="text" id="biography" ref={biography} placeholder="Biography" defaultValue={user.biography} />
+				<input
+					type="text"
+					id="biography"
+					ref={biography}
+					placeholder="Biography"
+					defaultValue={user.biography}
+				/>
 				<button className="pushRight" onClick={editBiography}>
 					Edit Biography
 				</button>
 			</div>
-
-	</>
+		</>
 	);
 }
-

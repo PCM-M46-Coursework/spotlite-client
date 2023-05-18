@@ -7,7 +7,7 @@ export default function ArtistCard({ artist, getTracks }) {
 				<p>{artist.name}</p>
 			</header>
 			<main>
-				<img src={artist.imageUrl} />
+				<img src={artist.imageUrl} alt={artist.name} title={artist.name} />
 			</main>
 			<footer>
 				<p>{artist.genres}</p>
