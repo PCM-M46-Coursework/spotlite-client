@@ -1,7 +1,7 @@
 .genre-results-container {
     display: flex;
+    flex-wrap: wrap;
     gap: 1ch;
     margin: 2ch;
     overflow-x: auto;
-    max-width: 124ch;
 }
