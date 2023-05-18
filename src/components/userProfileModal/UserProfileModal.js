@@ -4,7 +4,7 @@ import { UserProfileContext } from "./context/UserProfileContext";
 import { useContext } from "react";
 
 export default function UserProfileModal({ isUserProfileModalOpen, setIsUserProfileModalOpen }) {
-	const { page, renderPage } = useContext(UserProfileContext);
+	const { page } = useContext(UserProfileContext);
 
 	function closeForm() {
 		setIsUserProfileModalOpen(false);

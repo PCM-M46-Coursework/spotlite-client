@@ -7,7 +7,7 @@ export default function PlaylistCard({ playlist, getTracks }) {
 				<p>{playlist.title}</p>
 			</header>
 			<main>
-				<img src={playlist.imageUrl} />
+				<img src={playlist.imageUrl} alt={playlist.name} title={playlist.name} />
 			</main>
 			<footer>
 				<p>{playlist.description}</p>

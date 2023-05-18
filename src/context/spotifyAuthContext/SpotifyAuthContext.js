@@ -101,6 +101,7 @@ function SpotifyAuthProvider({ children }) {
 		if (!refreshToken) return;
 		(async () => await refreshAccessToken())();
 		return persistAccessToken();
+		// eslint-disable-next-line
 	}, [refreshToken]);
 
 	useEffect(() => {
@@ -115,6 +116,7 @@ function SpotifyAuthProvider({ children }) {
 			console.log("Redirect: ", redirect);
 			if (redirect) handleRedirect();
 		})();
+		// eslint-disable-next-line
 	}, []);
 
 	//#endregion
