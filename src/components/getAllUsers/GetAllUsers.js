@@ -1,10 +1,12 @@
 import "./GetAllUsers.css";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { getAllUsers } from "../../utils";
 import UserCard from "./parts/UserCard";
+import { SidebarMenuContext } from "../../context/sidebarMenuContext/SidebarMenuContext";
 
 const GetAllUsers = () => {
 	const [users, setUsers] = useState([]);
+	const {user} = useContext(SidebarMenuContext) 
 
 	useEffect(() => {
 		const fetchUsers = async () => {
@@ -27,7 +29,7 @@ const GetAllUsers = () => {
 
 			<div className="card-container">
 				{users.map(u => (
-					<UserCard user={u} isAdmin={true} />
+					<UserCard user={u} isAdmin={user.userrole === "admin"} />
 				))}
 			</div>
 		</>
