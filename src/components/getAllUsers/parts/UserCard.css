@@ -1,0 +1,18 @@
+.user-card {
+    width: 50vw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 5ch;
+}
+
+.user-card .username {
+    font-weight: 700;
+    width: 10ch;
+    text-align: right;
+}
+
+.user-card .profilePic img {
+    width: 64px;
+    height: 64px;
+}
