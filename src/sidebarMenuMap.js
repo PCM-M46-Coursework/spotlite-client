@@ -8,17 +8,14 @@ import PrivacyPolicy from "./components/privacyCentre/privacyPolicy/PrivacyPolic
 import TermsAndConditions from "./components/privacyCentre/legal/TermsAndConditions";
 import AudioVisual from "./components/local/AudioVisual";
 import SearchByArtist from "./components/spotify/searchByArtist/SearchByArtist";
+import SearchByGenre from "./components/spotify/searchByGenre/SearchByGenre";
+import FavouriteTracks from "./components/spotify/favouriteTracks/FavouriteTracks";
 
 // Add more menu items as needed
 const menuMap = [
 	{
 		category: "Spotify Search",
 		items: [
-			{
-				id: "playlists",
-				title: "Your Playlists",
-				component: <Playlists />,
-			},
 			{
 				id: "searchByTrack",
 				title: "Search by Track",
@@ -28,6 +25,21 @@ const menuMap = [
 				id: "searchByArtist",
 				title: "Search by Artist",
 				component: <SearchByArtist />,
+			},
+			{
+				id: "searchBygenre",
+				title: "Search by Genre",
+				component: <SearchByGenre />,
+			},
+			{
+				id: "favouriteTracks",
+				title: "Favourite Tracks",
+				component: <FavouriteTracks />,
+			},
+			{
+				id: "playlists",
+				title: "Your Playlists",
+				component: <Playlists />,
 			},
 		],
 	},
@@ -41,7 +53,7 @@ const menuMap = [
 			},
 			{
 				id: "playLocalFiles",
-				title: "Play local files",
+				title: "Play Local Files",
 				component: <AudioVisual />,
 			},
 		],

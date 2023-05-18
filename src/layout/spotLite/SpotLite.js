@@ -15,7 +15,7 @@ export default function SpotLite({ user, setUser }) {
 					<Header user={user} setUser={setUser} />
 				</div>
 				<div className="main-wrapper">
-					<SidebarMenuProvider>
+					<SidebarMenuProvider user={user} setUser={setUser}>
 						<div className="sidebar-wrapper">
 							<SideBar />
 						</div>

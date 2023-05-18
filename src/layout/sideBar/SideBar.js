@@ -23,11 +23,7 @@ export default function SideBar() {
 					<ul className="category-list">
 						{cat.items.map(item => (
 							<li
-								className={`menu-item${
-									selectedItem.id === item.id
-										? " selected"
-										: ""
-								}`}
+								className={`menu-item${selectedItem.id === item.id ? " selected" : ""}`}
 								key={item.id}
 								onClick={() => handleMenuItemClick(item)}
 							>

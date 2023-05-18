@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
-import { SpotifyArtistContext } from "../../context/SpotifyArtistContext";
+import { SpotifyGenreContext } from "../../context/SpotifyGenreContext";
 import { TrackSearchContext } from "../../../../../context/trackSearchContext/TrackSearchContext";
 import SpotifyTrackSearchResult from "../../../parts/spotifyTrackSearchResult/SpotifyTrackSearchResult";
 
 export default function TrackResultsMap() {
 	const { setCurrentTrack } = useContext(TrackSearchContext);
-	const { selectedArtist, selectedArtistTracks } = useContext(SpotifyArtistContext);
+	const { selectedGenre, selectedGenreTracks } = useContext(SpotifyGenreContext);
 
 	function chooseTrack(track) {
 		// Format: uri = "spotify:track:nukfhiwehfkuwfwkf"
@@ -15,10 +15,10 @@ export default function TrackResultsMap() {
 
 	return (
 		<div>
-			{selectedArtistTracks.length > 0 && (
+			{selectedGenreTracks.length > 0 && (
 				<>
-					<h3>{selectedArtist.name}</h3>
-					{selectedArtistTracks.map(track => (
+					<h3>{selectedGenre.name}</h3>
+					{selectedGenreTracks.map(track => (
 						<SpotifyTrackSearchResult
 							key={track.uri}
 							track={track}

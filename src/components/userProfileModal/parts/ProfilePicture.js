@@ -65,7 +65,7 @@ export default function ProfilePicture({ user, setUser }) {
 			{previewImage && (
 				<div className="form-row">
 					<label htmlFor="previewImage">Preview:</label>
-					<img id="previewImage" className="profile-image-profile" src={previewImage} alt="Preview" />
+					<img id="previewImage" className="profile-image-card" src={previewImage} alt="Preview" />
 				</div>
 			)}
 		</>
