@@ -12,7 +12,7 @@ const animateBars = (
   canvas.height = canvas.offsetHeight;
 
   const fftSizes = [32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768];
-  const barWidth = 5;
+  const barWidth = 2;
   const barGap = 1;
   let analyserWidth;
   if (mirror) {

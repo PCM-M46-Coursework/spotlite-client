@@ -6,7 +6,7 @@ import ContactDataProtection from "./components/privacyCentre/dataProtection/Con
 import CookiePolicy from "./components/privacyCentre/cookiePolicy/CookiePolicy";
 import PrivacyPolicy from "./components/privacyCentre/privacyPolicy/PrivacyPolicy";
 import TermsAndConditions from "./components/privacyCentre/legal/TermsAndConditions";
-import AudioVisual from "./components/local/AudioVisual";
+import Localfiles from "./components/local/Localfiles";
 
 // Add more menu items as needed
 const menuMap = [
@@ -36,7 +36,7 @@ const menuMap = [
 			{
 				id: "playLocalFiles",
 				title: "Play local files",
-				component: <AudioVisual />,
+				component: <Localfiles />,
 			},
 		],
 	},

@@ -1,8 +1,11 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Visual from "./Visual";
+
 import "./AV.css"
 
-const AudioVisual = () => {  const [trackName, setTrackName] = useState();
+const AudioVisual = ({selectedTrack, trackName}) => {  
+  const [localTrackName, setLocalTrackName] = useState();
+  const [localTrack, setLocalTrack] = useState();
 
   const [audioAnalyserData, setAudioAnalyserData] = useState(null);
   const [sourceCreated, setSourceCreated] = useState(false);
@@ -55,20 +58,30 @@ const AudioVisual = () => {  const [trackName, setTrackName] = useState();
   };
 
   const onFileChange = (e) => {
-    console.log("input", e.target.files);
+    console.log("input", e.target.value);
     const inputFile = e.target.files?.[0];
     if (!inputFile) return;
-    console.log("input file", inputFile);
+    console.log("input file 2", inputFile);
     const inputURL = URL.createObjectURL(inputFile);
     console.log("inputurl", inputURL);
-    setTrackName(inputFile.name);
     audioPlayer.current.src = inputURL;
     if (!sourceCreated) setupAudio();
   };
 
+  useEffect(() => {
+    if (selectedTrack){      
+    console.log("selected track changed", selectedTrack);
+    if (!sourceCreated) setupAudio();
+    const inputURL = new URL(selectedTrack);
+       //audioPlayer.current.src = inputURL;
+    audioPlayer.current.src = selectedTrack;
+    }
+  }, [selectedTrack])
+
+  
   return (
     <div className="AudioVisualContainer">
-      {trackName && (<h3>Now playing {trackName}</h3>)}
+      {trackName && (<><h4>Now playing</h4><h3>{trackName}</h3></>)}
       <div className="canvasContainer">
       {audioAnalyserData ? (
         <Visual audioAnalyserData={audioAnalyserData} />
@@ -81,7 +94,7 @@ const AudioVisual = () => {  const [trackName, setTrackName] = useState();
       {trackName? (<audio controls className="audioPlayer" ref={audioPlayer}></audio>):(<audio controls className="audioPlayerHidden" ref={audioPlayer}></audio>)}
       </div>
       <div className="fileInput">        
-        <button class="uploadButton">Choose file</button>
+        <button className="uploadButton">Choose file</button>
         <input type="file" accept="audio/*" onChange={onFileChange} className="uploadButton"/>
       </div>
     </div>
