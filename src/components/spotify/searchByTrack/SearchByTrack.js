@@ -21,7 +21,6 @@ export default function SearchByTrack() {
 	useEffect(() => {
 		if (!accessToken || !trackSearchTerm) return setSearchResults([]);
 		let cancel = false;
-
 		spotifyApi.searchTracks(trackSearchTerm).then(res => {
 			if (cancel) return;
 			console.log(res);
@@ -53,15 +52,23 @@ export default function SearchByTrack() {
 
 	return (
 		<div>
-			<h3>Search Results</h3>
+			<h3>Search by Track</h3>
 			{searchResults.length > 0 ? (
 				<>
 					{searchResults.map(track => (
-						<SpotifyTrackSearchResult key={track.uri} track={track} chooseTrack={chooseTrack} />
+						<SpotifyTrackSearchResult
+							key={track.uri}
+							track={track}
+							chooseTrack={chooseTrack}
+							favourites={false}
+						/>
 					))}
 				</>
 			) : (
-				<p>No results found.</p>
+				<p className="block-margin">
+					{`${trackSearchTerm.length > 0 ? "No results found." : "Search for music to play."}
+                    `}
+				</p>
 			)}
 		</div>
 	);

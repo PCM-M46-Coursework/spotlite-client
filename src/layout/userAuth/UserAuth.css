@@ -19,7 +19,6 @@
     justify-content: center;
     flex: 1;
     gap: 2ch;
-    width: 20vw;
     color: #ffffff;
 }
 
@@ -49,4 +48,8 @@
     padding-block: 0.5ch;
     text-align: center;
     font-size: 1.5rem;
+}
+
+.siteLogo img {
+    max-width: 80vw;
 }

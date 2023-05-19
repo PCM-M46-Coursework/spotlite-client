@@ -6,6 +6,7 @@
     border: solid 1px #ffffff;
     width: 30ch;
     padding: 1ch;
+    cursor: pointer;
     font-size: 0.8rem;
 }
 

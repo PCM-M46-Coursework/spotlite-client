@@ -5,7 +5,7 @@ header {
     gap: 1ch;
     width: 100vw;
     text-align: left;
-    padding: 1rem;
+    padding-inline: 1rem;
 }
 
 .branding {

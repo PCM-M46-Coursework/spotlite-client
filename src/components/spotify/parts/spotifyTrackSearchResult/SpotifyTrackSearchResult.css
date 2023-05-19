@@ -14,3 +14,20 @@
     color: #88888888;
     font-size: smaller;
 }
+
+.track-favourites-true,
+.track-favourites-false {
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 1ch;
+}
+
+.track-favourites-false:hover,
+.track-favourites-true {
+    color: gold;
+}
+
+.track-favourites-true:hover,
+.track-favourites-false {
+    color: #88888888;
+}

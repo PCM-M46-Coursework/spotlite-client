@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import MenuItem from "./MenuItem";
 import { UserProfileContext } from "../context/UserProfileContext";
 
@@ -21,6 +21,12 @@ export default function Menu() {
 				id="editDetails"
 				label="Edit Details"
 				selected={selectedItem === "editDetails"}
+				onClick={handleItemClick}
+			/>
+			<MenuItem
+				id="profilePic"
+				label="Profile Picture"
+				selected={selectedItem === "profilePic"}
 				onClick={handleItemClick}
 			/>
 			<MenuItem
