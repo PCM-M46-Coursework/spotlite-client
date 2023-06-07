@@ -1,0 +1,49 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1ch;
+    width: 100vw;
+    text-align: left;
+    padding-inline: 1rem;
+}
+
+.branding {
+    display: flex;
+    gap: 1ch;
+}
+
+.account {
+    display: flex;
+    align-items: center;
+    gap: 1ch;
+}
+
+.search {
+    width: 25vw;
+}
+
+.profile-link {
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.profile-link:hover {
+    text-decoration: underline;
+}
+
+.btn-logout {
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px 1px #000;
+    border: 2px solid #ffffff;
+    padding: 1ch;
+    color: #ffffff;
+    background-color: transparent;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+}
+
+.btn-logout:hover {
+    box-shadow: 1px 1px 5px 1px rgba(255, 255, 255, 1);
+}

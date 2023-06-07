@@ -1,0 +1,6 @@
+.playlist-results-container {
+    display: flex;
+    gap: 1ch;
+    margin: 2ch;
+    overflow-x: auto;
+}

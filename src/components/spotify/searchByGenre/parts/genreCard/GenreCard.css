@@ -1,0 +1,31 @@
+.spotify-genre-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1ch;
+    border: solid 1px #ffffff;
+    width: 30ch;
+    padding: 1ch;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.spotify-genre-card p {
+    width: 30ch;
+    text-align: center;
+}
+
+.spotify-genre-card img {
+    max-width: 19ch;
+    max-height: 19ch;
+}
+
+.spotify-genre-card header {
+    width: inherit;
+}
+
+.spotify-genre-card footer {
+    width: inherit;
+    overflow: hidden;
+    padding: 2ch;
+}

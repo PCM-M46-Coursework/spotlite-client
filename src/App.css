@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;400;700;900&display=swap');
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/***
+ * All styling subject to change...
+ **/
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 2ch;
+    min-height: 100svh;
+    background-color: #000000;
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+}
+
+.block-margin {
+    margin-block: 2ch;
+}
